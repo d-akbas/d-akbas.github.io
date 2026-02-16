@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Deniz Akbaş – Cartography & GIS Portfolio</title>
+
+<style>
+body {
+    background-color: #f4f1ec;
+    font-family: "Georgia", serif;
+    color: #2e2e2e;
+    margin: 0;
+}
+
+.container {
+    width: 900px;
+    margin: 60px auto;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: normal;
+    border-bottom: 1px solid #999;
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.map-card {
+    position: relative;
+    cursor: pointer;
+}
+
+.map-card img {
+    width: 100%;
+    border: 1px solid #aaa;
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(255,255,255,0.85);
+    font-size: 12px;
+    padding: 4px 6px;
+    border: 1px solid #ccc;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    overflow-y: auto; /* allows scrolling */
+    padding: 60px 0;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 999;
+    overflow-y: auto;          /* THIS enables scrolling */
+}
+
+.modal-content {
+    background: #fdfcf9;
+    width: 1000px;
+    max-width: 92%;
+    margin: 60px auto;
+    padding: 25px;
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.modal-content img {
+    width: 65%;
+    height: auto;
+    display: block;
+    border: 1px solid #999;
+}
+
+.description {
+    width: 35%;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.footer {
+    margin-top: 60px;
+    font-size: 12px;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Deniz Akbaş</h1>
+    <div class="subtitle">Personal Cartography & GIS Portfolio</div>
+
+    <div class="gallery">
+
+        <div class="map-card" onclick="openModal('map1-hq.jpg', 'Topographic Map of Belgrad Forest, Istanbul', 'This is a 1:25K scale topographic map of Belgrad Forest in Istanbul, made for use by hikers primarily. While Turkey has immense natural beauty, and hiking is a popular hobby, topographic maps of similar quality to those easily found in Europe and North America are inacessible for most people. This map was made in ArcGIS Pro 3.4 and Adobe Illustrator, using data from OpenStreetMap, STRM global elevation data, and geodata from the Istanbul Metropolitan Municipality Open Data Portal.')">
+            <img src="map1.jpg">
+            <div class="overlay-text">click for more info / detailed image</div>
+        </div>
+
+        <div class="map-card" onclick="openModal('map2-hq.jpg', '<map name>', '<description>')">
+            <img src="map2.jpg">
+            <div class="overlay-text">click for more info / detailed image</div>
+        </div>
+
+        <div class="map-card" onclick="openModal('map3-hq.jpg', '<map name>', '<description>')">
+            <img src="map3.jpg">
+            <div class="overlay-text">click for more info / detailed image</div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © 2026 · made with html & stubbornness
+    </div>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="modal-img">
+        <div class="description">
+            <h2 id="modal-title"></h2>
+            <p id="modal-desc"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(imageSrc, title, description) {
+    document.getElementById("myModal").style.display = "block";
+    document.getElementById("modal-img").src = imageSrc;
+    document.getElementById("modal-title").innerText = title;
+    document.getElementById("modal-desc").innerText = description;
+}
+
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
